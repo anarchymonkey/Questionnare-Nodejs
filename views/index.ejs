@@ -4,6 +4,9 @@
 
 <div class="well">
 <% for(var i = 0 ; i < data.length ; i++){ %>
+    <form action="/teacher/<%=data[i]._id %>.?_method=DELETE" method="POST">
+        <button class="btn btn-danger btn-xs pull-right"> Delete </button>
+    </form> 
     <h2 style="text-decoration:underline" style="font-family: 'Cinzel', serif;"><%= data[i].title%></h3>
     <h2 style="font-family: 'Cinzel', serif;"><%= data[i].type%></h2>
     <h2 style="font-family: 'Roboto', serif;">Q.<%=i+1%> <%= data[i].addQuestion%></h2>
@@ -16,9 +19,7 @@
 
 </ul>
 </h3>
-    <form action="/teacher/<%=data[i]._id %>.?_method=DELETE" method="POST">
-        <button class="btn btn-danger btn-xs"> Delete </button>
-    </form>    
+       
  <%}%>
 </div>
 </div>

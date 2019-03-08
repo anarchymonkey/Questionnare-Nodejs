@@ -21,7 +21,7 @@ let express = require('express'),
 
 
     router.delete("/teacher/:id",function(req,res){
-        QUES.findOneAndDelete(req.params.id,function (err,body) {
+        QUES.findOneAndDelete(req.params.id,function (err) {
           if(err)
           {
             res.redirect("/teacher");
