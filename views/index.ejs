@@ -1,0 +1,17 @@
+<% include partials/header.ejs %>
+
+<h1> To add questions Click here</h1>
+<button type="button" class="btn btn-primary" onclick="window.location.href='/addQuestion'">Add</button>
+
+<% for(var i = 0 ; i < data.length ; i++){ %>
+    <h3>Question.<%=i+1%> <%= data[i].title%></h3>
+    <h2><%= data[i].type%></h2>
+    <h2><%= data[i].addQuestion%></h2>
+    <form action="/teacher/<%=data[i]._id %>.?_method=DELETE" method="POST">
+        <button class="btn btn-danger btn-lg"> Delete </button>
+    </form>    
+ <%}%>
+
+
+
+<% include partials/footer.ejs %>
