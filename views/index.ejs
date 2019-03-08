@@ -1,16 +1,27 @@
 <% include partials/header.ejs %>
+<div class="container-fluid">
+<h1> Click <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='/addQuestion'">Add</button> to add questions</h1>
 
-<h1> To add questions Click here</h1>
-<button type="button" class="btn btn-primary" onclick="window.location.href='/addQuestion'">Add</button>
-
+<div class="well">
 <% for(var i = 0 ; i < data.length ; i++){ %>
-    <h3>Question.<%=i+1%> <%= data[i].title%></h3>
-    <h2><%= data[i].type%></h2>
-    <h2><%= data[i].addQuestion%></h2>
+    <h2 style="text-decoration:underline" style="font-family: 'Cinzel', serif;"><%= data[i].title%></h3>
+    <h2 style="font-family: 'Cinzel', serif;"><%= data[i].type%></h2>
+    <h2 style="font-family: 'Roboto', serif;">Q.<%=i+1%> <%= data[i].addQuestion%></h2>
+    <h3>
+        <ul style="list-style-type : none">
+            <% data[i].question.forEach(function(element,index){%>
+                <li style="font-family: 'Raleway', serif;"><input type="radio" name= <%= i %> value= <%= index %> > <%= element%> </li>
+            <% }); %>
+            <button type="button" class="btn btn-primary btn-lg" >Submit </button>
+
+</ul>
+</h3>
     <form action="/teacher/<%=data[i]._id %>.?_method=DELETE" method="POST">
-        <button class="btn btn-danger btn-lg"> Delete </button>
+        <button class="btn btn-danger btn-xs"> Delete </button>
     </form>    
  <%}%>
+</div>
+</div>
 
 
 

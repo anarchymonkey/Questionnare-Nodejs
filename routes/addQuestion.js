@@ -6,12 +6,12 @@ let express = require('express'),
 
     router.post('/addQuestion',(req,res)=>{
 
-        let quesArr = (req.body.questions).split(',');
+        //let quesArr = (req.body.questions).split(',');
         let getObject = {
             title : req.body.title,
-            type : req.body.mcq,
+            type : req.body.quesType,
             addQuestion : req.body.textbox,
-            question : quesArr,
+            question : req.body.questions,
             correct : req.body.options
 
         }
@@ -23,6 +23,7 @@ let express = require('express'),
             }
 
             res.redirect('/teacher');
+            console.log(store);
 
         });
 

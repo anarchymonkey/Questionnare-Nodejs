@@ -9,7 +9,7 @@ let express = require('express'),
     const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
-    mongoose.connect('mongodb://localhost/question_db');
+    mongoose.connect('mongodb://localhost/question_db',{ useNewUrlParser: true });
 
     app.set('view engine','ejs');
     app.use(express.static('public'));
