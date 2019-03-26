@@ -14,7 +14,7 @@ let express = require('express'),
             if(err){
                 console.log(err);
             }
-
+            console.log(found);
             res.render('index.ejs',{data:found});
         });
     });
@@ -32,7 +32,7 @@ let express = require('express'),
           }
         });
       });
-      
+
 
 
     module.exports = router;

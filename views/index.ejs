@@ -1,28 +1,54 @@
 <% include partials/header.ejs %>
 <div class="container-fluid">
-<h1> Click <button type="button" class="btn btn-primary btn-lg" onclick="window.location.href='/addQuestion'">Add</button> to add questions</h1>
+<h1> Click <button type="button" class="btn btn-success btn-lg" onclick="window.location.href='/addQuestion'">Add</button> to add questions</h1>
 
-<div class="well">
-<% for(var i = 0 ; i < data.length ; i++){ %>
+<div class="well ">
+<% for(let i = 0 ; i < data.length ; i++){ %>
     <form action="/teacher/<%=data[i]._id %>.?_method=DELETE" method="POST">
         <button class="btn btn-danger btn-xs pull-right"> Delete </button>
-    </form> 
+    </form>
     <h2 style="text-decoration:underline" style="font-family: 'Cinzel', serif;"><%= data[i].title%></h3>
     <h2 style="font-family: 'Cinzel', serif;"><%= data[i].type%></h2>
     <h2 style="font-family: 'Roboto', serif;">Q.<%=i+1%> <%= data[i].addQuestion%></h2>
     <h3>
-        <ul style="list-style-type : none">
+        <ul style="list-style-type : none" >
             <% data[i].question.forEach(function(element,index){%>
-                <li style="font-family: 'Raleway', serif;"><input type="radio" name= <%= i %> value= <%= index %> > <%= element%> </li>
+                <li style="font-family: 'Raleway', serif;"><input type="radio" name= <%= i %> class="element<%=i%>" value= "<%= element %>" > <%= element%> </li>
+                <br>
             <% }); %>
-            <button type="button" class="btn btn-primary btn-lg" >Submit </button>
+            <br>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-lg " onclick="checkMarks(<%= data[i].correct %>,<%= i %>)" >Submit </button>
+            </div>
 
 </ul>
 </h3>
-       
+
  <%}%>
 </div>
 </div>
+
+<script>
+
+function checkMarks(correct,index){
+    let storeCheckedIndex = 0;
+    let options = document.querySelectorAll(".element"+index);
+    for(let i = 0 ; i < options.length ; i++){
+      if(options[i].checked === true){
+          storeCheckedIndex = i;
+          break;
+      }
+    }
+    console.log(options[storeCheckedIndex].value);
+    if(options[storeCheckedIndex].value === options[correct].value){
+      alert("correct");
+    }
+    else{
+      console.log(options[correct].value);
+    }
+}
+</script>
+
 
 
 
