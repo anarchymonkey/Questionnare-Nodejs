@@ -18,20 +18,6 @@ let express = require('express'),
             res.render('index.ejs',{data:found});
         });
     });
-
-
-    router.get('/student',(req,res)=>{
-
-      QUES.find({},(err,found)=>{
-        if(err){
-          console.log(err);
-        }
-        res.render('studentAccess',{data:found});
-      });
-      
-    });
-
-
     router.delete("/teacher/:id",function(req,res){
         QUES.findOneAndDelete(req.params.id,function (err) {
           if(err)
@@ -43,6 +29,21 @@ let express = require('express'),
             res.redirect("/teacher");
           }
         });
+      });
+      router.get('/student',(req,res)=>{
+
+        QUES.find({},(err,found)=>{
+          if(err){
+            console.log(err);
+          }
+          res.render('studentAccess',{data:found});
+        });
+        
+      });
+      
+      router.get('/student/score',(req,res)=>{
+
+          res.render('scorePage');
       });
 
 

@@ -2,10 +2,12 @@
 <div class="container-fluid">
     <h1> Welcome to Chitkara University Online MCQ Platform</h1>
     <section>
-        <h1 class="pull-right" id="timer">10</h1>
-    <h1 class="pull-right" id="score" value="0">0 &nbsp;</h1>
+        <h2 class="pull-right">&nbsp;minutes left&nbsp;</h2>
+        <h1 class="pull-right" id="timer">10.59</h1>
+        <h1 class="pull-right" id="score" value="0">&nbsp;</h1>
     </section>
-    <div class="well ">
+
+    <div class="well">
     <% for(let i = 0 ; i < data.length ; i++){ %>
             
         <h2 style="text-decoration:underline" style="font-family: 'Cinzel', serif;"><%= data[i].title%></h3>
@@ -46,15 +48,14 @@
               break;
           }
         }
-
-       
-       
         console.log(options[storeCheckedIndex].value);
+        
         if(options[storeCheckedIndex].value === options[correct].value && options[correct].checked == true){
+          calcScore.style.visibility = "hidden";
           calcScore.textContent++;
           calcScore.style.padding = "10px 10px";
-        }
-        else{
+        
+        }else{
           console.log(options[correct].checked);
         }
     }
@@ -62,19 +63,23 @@
     let timer = document.getElementById('timer');
     if(timer.textContent >= 0){
         setInterval(function(){
-            timer.textContent--;
+        timer.textContent = (timer.textContent-0.01).toPrecision(4).toString();
         },1000);
-    }
-    else{
-        timer.textContent = 10;
+    }else if(timer.textContent < 0) {
+        timer.textContent = 600;
     }
     
 
-   setTimeout(function endTest(){
+   function endTest(){
         let calcScore = document.getElementById('score');
-       
-        alert(parseInt(calcScore.textContent));
-    },10000);
+        let endit = document.getElementById('endit');
+        localStorage.setItem('score',parseInt(calcScore.textContent));
+        endit.addEventListener('click',()=>{
+            window.location.href = '/student/score';
+        });
+        
+       setTimeout(function(){ window.location.href = '/student/score'},110000);
+    }
 
     </script>
 <% include partials/footer.ejs %>

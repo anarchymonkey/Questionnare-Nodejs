@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+
+<div class="container">
+    <div class="jumbotron">
+    <h1 style="text-align : center"> So Your total score is </h1>
+    <h1 id="displayStudentScore" style="text-align:center"> 0 &nbsp;</h3>
+    </div>
+</div>
+
+
+<script>
+
+    (function(){
+        let score = document.getElementById('displayStudentScore');
+        let getScore = localStorage.getItem('score');
+        score.textContent = getScore;
+    }());
+
+</script>
+
+<% include partials/footer.ejs %>
