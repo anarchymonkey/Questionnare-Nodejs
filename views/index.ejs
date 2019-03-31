@@ -7,6 +7,7 @@
     <form action="/teacher/<%=data[i]._id %>.?_method=DELETE" method="POST">
         <button class="btn btn-danger btn-xs pull-right"> Delete </button>
     </form>
+    <button class="btn btn-primary btn-xs pull-right btn-inline"> Edit </button>
     <h2 style="text-decoration:underline" style="font-family: 'Cinzel', serif;"><%= data[i].title%></h3>
     <h2 style="font-family: 'Cinzel', serif;"><%= data[i].type%></h2>
     <h2 style="font-family: 'Roboto', serif;">Q.<%=i+1%> <%= data[i].addQuestion%></h2>
@@ -24,7 +25,7 @@
 </ul>
 </h3>
 
- <%}%>
+ <% } %>
 </div>
 </div>
 
@@ -33,6 +34,7 @@
 function checkMarks(correct,index){
     let storeCheckedIndex = 0;
     let options = document.querySelectorAll(".element"+index);
+    let scoreCounter  = 0;
     for(let i = 0 ; i < options.length ; i++){
       if(options[i].checked === true){
           storeCheckedIndex = i;

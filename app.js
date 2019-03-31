@@ -1,5 +1,5 @@
 let express = require('express'),
-    bodyParser = require('body-parser'),
+    bodyParser = require('body-parser'), // use to get data from form by the name feild.  
     mongoose = require('mongoose'),
     indexRoute = require('./routes/index'),
     questionRoute = require('./routes/addQuestion');
@@ -11,9 +11,9 @@ app.use(methodOverride("_method"));
 
     mongoose.connect('mongodb://localhost/question_db',{ useNewUrlParser: true });
 
-    app.set('view engine','ejs');
-    app.use(express.static('public'));
-    app.use(bodyParser.urlencoded({extended:true}));
+    app.set('view engine','ejs'); // for searching templating engine ejs.
+    app.use(express.static('public')); // for making the app understand that css js file will be in public folder.
+    app.use(bodyParser.urlencoded({extended:true})); // syntax for including bodyParser module.
 
     app.use(indexRoute);
     app.use(questionRoute);

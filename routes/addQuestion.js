@@ -34,4 +34,8 @@ let express = require('express'),
 
     });
 
+    router.get('/addQuestion/edit/:id',(req,res)=>{
+        res.send('edit page'); 
+    });
+
     module.exports = router;

@@ -20,6 +20,18 @@ let express = require('express'),
     });
 
 
+    router.get('/student',(req,res)=>{
+
+      QUES.find({},(err,found)=>{
+        if(err){
+          console.log(err);
+        }
+        res.render('studentAccess',{data:found});
+      });
+      
+    });
+
+
     router.delete("/teacher/:id",function(req,res){
         QUES.findOneAndDelete(req.params.id,function (err) {
           if(err)

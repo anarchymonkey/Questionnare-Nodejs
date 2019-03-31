@@ -1,0 +1,80 @@
+<% include partials/header.ejs %>
+<div class="container-fluid">
+    <h1> Welcome to Chitkara University Online MCQ Platform</h1>
+    <section>
+        <h1 class="pull-right" id="timer">10</h1>
+    <h1 class="pull-right" id="score" value="0">0 &nbsp;</h1>
+    </section>
+    <div class="well ">
+    <% for(let i = 0 ; i < data.length ; i++){ %>
+            
+        <h2 style="text-decoration:underline" style="font-family: 'Cinzel', serif;"><%= data[i].title%></h3>
+        <h2 style="font-family: 'Cinzel', serif;"><%= data[i].type%></h2>
+        <h2 style="font-family: 'Roboto', serif;">Q.<%=i+1%> <%= data[i].addQuestion%></h2>
+        <h3>
+            <ul style="list-style-type : none" >
+                <% data[i].question.forEach(function(element,index){%>
+                    <li style="font-family: 'Raleway', serif;"><input type="radio" name= <%= i %> class="element<%=i%>" value= "<%= element %>" > <%= element%> </li>
+                    <br>
+                <% }); %>
+                <br>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-lg " onclick="checkMarks(<%= data[i].correct %>,<%= i %>)" >Submit </button>
+                </div>
+    
+    </ul>
+    </h3>
+    
+     <% } %>
+    </div>
+    </div>
+
+    <div style="text-align:center; margin : 0 auto;">
+    <button class="btn btn-danger" style="margin:10 auto; padding: 16px 16px;" id="endit" onclick="endTest()">End-Test</button>
+</div>
+    <script>
+    
+    function checkMarks(correct,index){
+        let storeCheckedIndex = 0;
+        let calcScore = document.getElementById('score');
+        let options = document.querySelectorAll(".element"+index);
+        let endit = document.getElementById('endit');
+        let scoreCounter  = 0;
+        for(let i = 0 ; i < options.length ; i++){
+          if(options[i].checked === true){
+              storeCheckedIndex = i;
+              break;
+          }
+        }
+
+       
+       
+        console.log(options[storeCheckedIndex].value);
+        if(options[storeCheckedIndex].value === options[correct].value && options[correct].checked == true){
+          calcScore.textContent++;
+          calcScore.style.padding = "10px 10px";
+        }
+        else{
+          console.log(options[correct].checked);
+        }
+    }
+
+    let timer = document.getElementById('timer');
+    if(timer.textContent >= 0){
+        setInterval(function(){
+            timer.textContent--;
+        },1000);
+    }
+    else{
+        timer.textContent = 10;
+    }
+    
+
+   setTimeout(function endTest(){
+        let calcScore = document.getElementById('score');
+       
+        alert(parseInt(calcScore.textContent));
+    },10000);
+
+    </script>
+<% include partials/footer.ejs %>
