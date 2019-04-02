@@ -36,13 +36,13 @@ let express = require('express'),
           if(err){
             console.log(err);
           }
-          res.render('studentAccess',{data:found});
+          res.render('studentAccess',{data:found,id : id});
         });
         
       });
       
-      router.get('/student/score',(req,res)=>{
-
+      router.get('/student/:id/score',(req,res)=>{
+        let id = req.params.id;
           res.render('scorePage');
       });
 

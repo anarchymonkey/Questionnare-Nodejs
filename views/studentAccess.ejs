@@ -32,7 +32,7 @@
     </div>
 
     <div style="text-align:center; margin : 0 auto;">
-    <button class="btn btn-danger" style="margin:10 auto; padding: 16px 16px;" id="endit" onclick="endTest()">End-Test</button>
+    <button class="btn btn-danger" style="margin:10 auto; padding: 16px 16px;" id="endit" onclick="endTest('<%= id %>')">End-Test</button>
 </div>
     <script>
     
@@ -70,15 +70,16 @@
     }
     
 
-   function endTest(){
+   function endTest(id){
+       console.log(id);
         let calcScore = document.getElementById('score');
         let endit = document.getElementById('endit');
         localStorage.setItem('score',parseInt(calcScore.textContent));
         endit.addEventListener('click',()=>{
-            window.location.href = '/student/score';
+            window.location.href = '/student/'+id+'/score';
         });
         
-       setTimeout(function(){ window.location.href = '/student/score'},110000);
+       setTimeout(function(){ window.location.href = '/student/'+id+'/score'},110000);
     }
 
     </script>
