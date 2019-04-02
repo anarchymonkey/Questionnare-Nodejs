@@ -4,7 +4,7 @@ let express = require('express'),
 
 
     router.get('/',(req,res)=>{
-        res.redirect('/student/signin');
+        res.redirect('/signin');
     });
 
     router.get('/teacher',(req,res)=>{
