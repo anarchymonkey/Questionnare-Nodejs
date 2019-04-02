@@ -4,7 +4,7 @@ let express = require('express'),
 
 
     router.get('/',(req,res)=>{
-        res.redirect('/teacher');
+        res.redirect('/student/signin');
     });
 
     router.get('/teacher',(req,res)=>{
@@ -30,8 +30,8 @@ let express = require('express'),
           }
         });
       });
-      router.get('/student',(req,res)=>{
-
+      router.get('/student/:id',(req,res)=>{
+        let id = req.params.id;
         QUES.find({},(err,found)=>{
           if(err){
             console.log(err);

@@ -2,8 +2,8 @@ let express = require('express'),
     bodyParser = require('body-parser'), // use to get data from form by the name feild.  
     mongoose = require('mongoose'),
     indexRoute = require('./routes/index'),
-    questionRoute = require('./routes/addQuestion');
-    
+    questionRoute = require('./routes/addQuestion'),
+    authRoute = require('./routes/authRoutes');
 
     let app = express();
     const methodOverride = require("method-override");
@@ -17,6 +17,7 @@ app.use(methodOverride("_method"));
 
     app.use(indexRoute);
     app.use(questionRoute);
+    app.use(authRoute);
 
 
 
