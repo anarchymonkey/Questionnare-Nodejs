@@ -32,11 +32,13 @@ let express = require('express'),
                 
                 res.redirect('/signup');
             }
-            else{
-                console.log(found);
+            else if(found.password == req.body.password) {
+                console.log(found.password);
                 res.redirect('/student/'+found._id);    
             }
-
+            else{
+            res.redirect('/signin');
+            }
            });
     });
 
