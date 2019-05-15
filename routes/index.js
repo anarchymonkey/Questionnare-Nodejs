@@ -4,7 +4,7 @@ let express = require('express'),
     isAuthenticated = require('../middleware/authMiddlewares.js');
 
 
-    router.get('/',isAuthenticated,(req,res)=>{
+    router.get('/',(req,res)=>{
         console.log('home page access');
         res.render('homepage.ejs');
     });

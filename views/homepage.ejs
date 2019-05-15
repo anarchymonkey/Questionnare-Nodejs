@@ -4,9 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/homepage.css">
     <title>Document</title>
 </head>
 <body>
-    <h1> accessed the home page</h1>
+        <nav class="nav navbar-default navbar-inverse">
+                <a class="navbar-brand"> M<{*.*}>Q </a>
+                <ul class="nav navbar-nav">
+                        <li><a href="/" >Home</a></li>
+                    </ul>
+                <ul class="nav pull-right">
+                
+                <% if (!user.username){%>
+                <button type="button" class="btn btn-primary navbar-btn " onclick="window.location.href='/signin' "style="margin-right:1em;">Sign in</button>
+                 <%}else{ %>
+                    <button type="button" class="btn btn-danger navbar-btn " onclick="window.location.href='/logout' "style="margin-right:1em;">logout <%= user.username %></button>
+                    <%}%>   
+                </ul>
+            </nav>
+    <h1 id="header"> <span id="under">Welc</span>ome To Xchievers </h1>
+
+    <div class="selection-main" id="slideThis">
+    <% if(!user.username){%>
+    <h3 id="selection"> Are you a teacher or a student?</h3>
+    <button class="teacher" id="teach" onclick="window.location.href='/teacher'">Teacher</button>
+    <button class="student" id="student" onclick="window.location.href='/signin'">Student</button>
+    <%}else{%>
+     <h3 id="selection">Lets continue your test <%= user.username %></h1>
+     <button class="teacher" id="teach" onclick="window.location.href='/student/<%= user.id %>' ">Click Here</button>
+     
+    <%}%>
+    </div>
+       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+    function main(){
+        $(document).ready(()=>{
+            $('#header').on("mouseover",()=>{
+                $('#header').text('Hey');
+            }).on("mouseout",()=>{
+                $('#header').html('<h1 id="header"> <span id="under">Welc</span>ome To Xchievers </h1>')
+            });
+        });
+    }
+
+    main();
+</script>
 </body>
 </html>

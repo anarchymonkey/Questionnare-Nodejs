@@ -1,0 +1,93 @@
+html,body{
+    background:rgb(48, 46, 46);
+    backface-visibility: unset; 
+    z-index: -1;
+    padding: 16px auto;
+}
+#header {
+    color: antiquewhite;
+    font-family: 'Anton',sans-serif;
+    z-index: 1;
+    text-align: center; 
+    letter-spacing: 0.5em;
+    font-size: 60px;
+    height: 80px;
+    font-weight: 500;
+    display: block;
+    animation: animate 2s linear;
+    animation-timing-function: ease-out;
+    margin-top: 5%;
+}
+
+@keyframes animate{
+    0%{
+        color:red;
+        transition: ease-in;
+    }
+}
+
+#under{
+    text-decoration: underline red;
+}
+.selection-main{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    animation: fadeIn ease-in 5s;
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    },
+    100%{
+        opacity: 1;
+    }
+}
+#selection{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    color: antiquewhite;
+    letter-spacing: 1.1px;
+    font-size: 30px;
+    margin-top: 8%;
+    margin-bottom : 1%;
+}
+
+.teacher,.student{
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 24px;
+    color:azure;
+    border:none;
+    margin:5%;
+}
+#teach{
+    background: #c31432; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #c31432, #240b36); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #c31432, #240b36);
+  outline: none;
+  box-shadow: 1px 2px 1px black;
+}
+#student{
+    background: #636363;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a2ab58, #636363);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a2ab58, #636363); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+outline: none;
+box-shadow: 1px 2px 1px black;
+}
+
+#teach:hover{
+    background: #640721;
+    box-shadow: 1px 3px 1px rgb(126, 123, 112);
+    cursor: pointer;
+    border: none;
+}
+
+#student:hover{
+    background: #2a8d50;
+    box-shadow: 1px 3px 1px rgb(240, 237, 232);
+}

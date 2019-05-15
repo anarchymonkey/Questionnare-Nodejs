@@ -13,7 +13,7 @@ let express = require('express'),
                 res.redirect('/student/signup');
             }
             console.log(inserted);
-            res.redirect('/student/'+inserted._id);
+            res.redirect('/signin');
         });
     });
 
@@ -33,6 +33,7 @@ let express = require('express'),
             }
             else if(found.password == req.body.password) {
 
+                req.session.id = found._id;
                 req.session.username = found.username;
                 req.session.password = found.password;
                 req.session.email = found.email;
