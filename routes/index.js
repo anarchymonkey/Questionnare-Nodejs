@@ -1,10 +1,12 @@
 let express = require('express'),
     router = express.Router(),
-    QUES = require('../models/questionModel');
+    QUES = require('../models/questionModel'),
+    isAuthenticated = require('../middleware/authMiddlewares.js');
 
 
-    router.get('/',(req,res)=>{
-        res.redirect('/signin');
+    router.get('/',isAuthenticated,(req,res)=>{
+        console.log('home page access');
+        res.render('homepage.ejs');
     });
 
     router.get('/teacher',(req,res)=>{

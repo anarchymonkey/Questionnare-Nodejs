@@ -6,5 +6,20 @@
         <link rel="stylesheet" type="text/css" href="/index.css">
     </head>
     <body>
+        <nav class="nav navbar-default navbar-inverse">
+            <a class="navbar-brand"> M<{*.*}>Q </a>
+            <ul class="nav navbar-nav">
+                <li><a href="/teacher">Teacher</a></li>
+                <li><a href="/signin" >Student</a></li>
+            </ul>
+            <ul class="nav pull-right">
+            
+            <% if (!user.username){%>
+            <button type="button" class="btn btn-default navbar-btn " onclick="window.location.href='/signin' "style="margin-right:1em;">Sign in</button>
+             <%}else{ %>
+                <button type="button" class="btn btn-default navbar-btn " onclick="window.location.href='/logout' "style="margin-right:1em;">logout <%= user.username %></button>
+                <%}%>   
+            </ul>
+        </nav>
         
     

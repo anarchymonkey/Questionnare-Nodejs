@@ -3,7 +3,8 @@ let mongoose = require('mongoose');
 
 let authSchema = new mongoose.Schema({
     username : String,
-    password : String
+    password : String,
+    email : String
 });
 
 
